@@ -1,0 +1,107 @@
+<html>
+<head>
+    <title>ChatLock</title>
+
+    <style>
+        * {
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #header-section {
+            background-color: #555555;
+            width: 40%;
+            border-radius: 10px;
+            height: 10%;
+            color: white;
+            padding: 1vw;
+            display: flex;
+            flex-direction: column;
+        }   
+
+        #header-section p,h1{
+            margin: 5px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #send-message{
+            height: auto;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: auto;
+            padding: 1.2vw;
+        }
+
+        #send-message button{
+            width: 7vw;
+            height: 2vw;
+            background-color: #FAF9F6;
+            border: none;
+            border-bottom: 1px solid black;
+            border-left: 1px solid black;
+        }
+
+        #send-message input{
+            border: none;
+            border-bottom: 1px solid black;
+            height: 2vw;
+            width: 50%;
+            background-color: #FAF9F6;
+        }
+
+        #messages-section{
+            flex: 1;
+            padding: 1vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;    
+            overflow-y: scroll;
+            width: 40%;
+        }
+
+        .note{
+            display: flex;
+            justify-content: space-between;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div id="header-section">
+        <h1>ChatLock</h1>   
+            <div class="note">
+                <p>To send a private message: </p>
+                <p>private:&lt;receiver_username&gt;:&lt;message&gt;</p>
+            </div>
+
+            <div class="note">
+                <p>To disconnect:</p>
+                <p>!DISCONNECT</p>
+            </div>
+    </div>
+
+    <div id="messages-section">
+        <div id="chat">
+            {% for message in messages %}
+                <ul class="message">{{ message }}</ul>
+            {% endfor %}
+        </div>
+    
+        <form method="post" id="send-message">
+            <input type="text" name="message" placeholder="&nbsp;&nbsp;Send Message">
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+</body>
+</html>
